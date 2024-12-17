@@ -1,26 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/persons.rpy", line 7, in script
-    image gg calm1 = At("gg stand", sprite_highlight("gg"))
-  File "game/persons.rpy", line 7, in <module>
-    image gg calm1 = At("gg stand", sprite_highlight("gg"))
-NameError: name 'sprite_highlight' is not defined
+  File "game/scenes/day1.rpy", line 23, in script
+    show left gg calm1 with moveincenter
+  File "game/scenes/day1.rpy", line 23, in <module>
+    show left gg calm1 with moveincenter
+NameError: name 'moveincenter' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/persons.rpy", line 7, in script
-    image gg calm1 = At("gg stand", sprite_highlight("gg"))
-  File "C:\Users\3loyK\RenPy\renpy-8.3.2-sdk\renpy\ast.py", line 920, in execute
-    img = renpy.python.py_eval_bytecode(self.code.bytecode)
+  File "game/scenes/day1.rpy", line 23, in script
+    show left gg calm1 with moveincenter
+  File "C:\Users\3loyK\RenPy\renpy-8.3.2-sdk\renpy\ast.py", line 1357, in execute
+    paired = renpy.python.py_eval(self.paired)
+  File "C:\Users\3loyK\RenPy\renpy-8.3.2-sdk\renpy\python.py", line 1209, in py_eval
+    return py_eval_bytecode(code, globals, locals)
   File "C:\Users\3loyK\RenPy\renpy-8.3.2-sdk\renpy\python.py", line 1202, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/persons.rpy", line 7, in <module>
-    image gg calm1 = At("gg stand", sprite_highlight("gg"))
-NameError: name 'sprite_highlight' is not defined
+  File "game/scenes/day1.rpy", line 23, in <module>
+    show left gg calm1 with moveincenter
+NameError: name 'moveincenter' is not defined
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.3.2.24090902
 7daysandsins 1.0
-Tue Dec 17 20:13:07 2024
+Tue Dec 17 20:24:04 2024

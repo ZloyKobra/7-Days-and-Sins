@@ -20,8 +20,10 @@ label day1:
     gg "Кто здесь?!"
 
     hide gg calm2
-    show left gg calm1 with moveincenter
-    # show laziness calm1 with right
+    show gg calm1:
+        xalign 0.2
+        yalign 1.0
+    # show laziness calm1 at right
 
     laziness "Не бойся, я твой друг и защитник – Лень, не хочу, чтобы ты перетрудился"
     # laziness "Бу, испугался, не бойся это я твой друг!"
