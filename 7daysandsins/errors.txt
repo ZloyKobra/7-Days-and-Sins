@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/persons.rpy", line 4: invalid syntax
+    Character("Лень", color"#dd7be6", callback=name_callback, cb_name="laziness")
+                            ^
+
+Ren'Py Version: Ren'Py 8.3.2.24090902
+Tue Dec 17 20:08:58 2024
