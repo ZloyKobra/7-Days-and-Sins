@@ -2,6 +2,7 @@ define gg = Character("[gg_name]", color="#49df7b") # , callback=name_callback, 
 define e = Character('Эйлин', color="#c8ffc8")
 define noname = Character("...", color="#ffac68")
 define laziness = Character("Лень", color="#dd7be6")
+define hunger = Character("Голод", color="#fa8a2e")
 
 
 image gg calm1 = At("gg stand", sprite_highlight("gg"))
