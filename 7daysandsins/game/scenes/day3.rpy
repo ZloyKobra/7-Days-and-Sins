@@ -7,4 +7,5 @@ label day3_begin:
 
 
 label day3:
+    "хммм"
     return
