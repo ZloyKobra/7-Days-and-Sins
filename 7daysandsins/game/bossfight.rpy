@@ -1,6 +1,10 @@
 label start_battle:
     $ player = MyCharacter("Player", 100, 100, 2, 2, 2)
-    $ enemy = MyCharacter("Enemy", 1000, 9999, 0, 0, 0)
+    $ difficult = 3 #твоя переменная сложности, эту можно убить отсюда
+    $ hardness_multiplier = 1
+    if difficult >= 3:
+        $ hardness_multiplier = 2 #собственно накрутка сложности для врага
+    $ enemy = MyCharacter("Enemy", hardness_multiplier * 1000, 9999, 0, 0, 0)
     show screen battle_ui
     while player.hp > 0 and enemy.hp > 0:
 
@@ -59,31 +63,54 @@ label open_player_skills:
 label open_inventory:
     show screen inventory_ui
     menu:
-        "Бутерброд - восстанавливает 20 единиц здоровья":
-            "Вкуснятина..."
-            $ player.hp = min(100, player.hp + 20)
-            hide screen inventory_ui
-            return
+        "Бутерброд - восстанавливает 25 единиц здоровья":
+            if player.healing_items > 0: #проверяем, есть ли ваще предмет, который мы хотим использовать
+                "Вкуснятина..."
+                $ player.hp = min(100, player.hp + 25)
+                $ player.healing_items -= 1
+                hide screen inventory_ui
+                return
+            else: #если нет идём обратно
+                "Нечего использовать."
+                hide screen inventory_ui
+                jump player_turn
         "Энергетик - восстанавливает 30 единиц психики":
-            "some text i dunno"
-            $ player.mind = min(100, player.mind + 30)
-            hide screen inventory_ui
-            return
+            if player.mind_items > 0:
+                "some text i dunno"
+                $ player.mind = min(100, player.mind + 30)
+                $ player.mind_items -= 1
+                hide screen inventory_ui
+                return
+            else:
+                "Нечего использовать."
+                hide screen inventory_ui
+                jump player_turn
         "Какой-то предмет с уроном хз":
-            $ damage = random.randint(150, 450)
-            $ player.perform_attack(enemy, damage)
-            "Нанесено урона: [damage]"
-            hide screen inventory_ui
-            return
+            if player.damaging_items > 0:
+                $ damage = random.randint(150, 450)
+                $ player.perform_attack(enemy, damage)
+                "Нанесено урона: [damage]"
+                $ player.damaging_items -= 1
+                hide screen inventory_ui
+                return
+            else:
+                "Нечего использовать."
+                hide screen inventory_ui
+                jump player_turn
         "Назад":
             hide screen inventory_ui
             jump player_turn
 
 label enemy_turn:
     "Ход врага!"
+    $ action = random.randint(1, 3) #воу теперь враг иногда будет бить по рассудку
     $ damage = random.randint(10, 30)
-    $ enemy.perform_attack(player, damage)
-    "Враг делает что-то, получено урона: [damage]"
+    if action == 3:
+        $ enemy.perform_mind_attack(player, damage) #собственно тут он это и делает
+        "Враг атакует ваш психику, получено урона: [damage]"
+    else:
+        $ enemy.perform_attack(player, damage)
+        "Враг делает что-то, получено урона: [damage]"
     return
 
 label end_battle:
