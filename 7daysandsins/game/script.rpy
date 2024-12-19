@@ -12,6 +12,10 @@ init python:
             target.hp -= damage
             if target.hp < 0:
                 target.hp = 0
+        def perform_mind_attack(self, target, damage):
+            target.mind -= damage
+            if target.mind < 0:
+                target.mind = 0
 
 
 label start:
